@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.27.2 FATAL_ERROR)
+cmake_minimum_required(VERSION 3.26.4 FATAL_ERROR)
 
 project(2dgameengine VERSION 0.1.0 LANGUAGES CXX)
 add_executable(${PROJECT_NAME} ${CMAKE_SOURCE_DIR}/src/main.cpp)
@@ -19,3 +19,8 @@ target_include_directories(${PROJECT_NAME} PUBLIC "$<BUILD_INTERFACE:${INCLUDE_P
 target_link_libraries(${PROJECT_NAME} ${OPENGL_LIBRARIES} glfw glad)
 
 set_target_properties(${PROJECT_NAME} PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin/debug)
+
+if(MSVC)
+    target_compile_options(${PROJECT_NAME} PUBLIC "/ZI")
+    target_link_options(${PROJECT_NAME} PUBLIC "/INCREMENTAL")
+endif()
