@@ -1,7 +1,8 @@
 cmake_minimum_required(VERSION 3.27.2 FATAL_ERROR)
 
-project(2dgameengine VERSION 1.0.0 LANGUAGES CXX)
+project(2dgameengine VERSION 0.1.0 LANGUAGES CXX)
 add_executable(${PROJECT_NAME} ${CMAKE_SOURCE_DIR}/src/main.cpp)
+target_compile_features(${PROJECT_NAME} PRIVATE cxx_std_20)
 
 add_subdirectory(${CMAKE_SOURCE_DIR}/vendor/glad)
 add_subdirectory(${CMAKE_SOURCE_DIR}/vendor/glfw)
